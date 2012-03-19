@@ -123,10 +123,44 @@ swapon /dev/ps3dd1
 ## Git cloning of Kernal)
 echo "Downloading kernel source from git and creating symlink"
 cd /usr/src
-wget http://gotbrew.org/git/linux-2.6.tar.gz
-tar -xvf linux-2.6.tar.gz
-ln -sf /usr/src/linux-2.6 /usr/src/linux
-cp /usr/src/linux/ps3_linux_config /usr/src/linux/.config
+wget http://www.kernel.org/pub/linux/kernel/v3.0/linux-3.2.11.tar.bz2
+tar -xvf linux-3.2.11-build.tar.bz2
+ln -sf /usr/src/linux-3.2.11 /usr/src/linux
+cd /usr/src/linux
+wget http://gitbrew.org/~glevand/ps3/linux/linux-3/patches/ps3stor-multiple-regions.patch
+wget http://gitbrew.org/~glevand/ps3/linux/linux-3/patches/ps3fb-use-fifo.patch
+wget http://gitbrew.org/~glevand/ps3/linux/linux-3/patches/ps3flash.patch
+wget http://gitbrew.org/~glevand/ps3/linux/linux-3/patches/ps3sysmgr-lpar-reboot.patch
+wget http://gitbrew.org/~glevand/ps3/linux/linux-3/patches/ps3sysmgr-char-device.patch
+wget http://gitbrew.org/~glevand/ps3/linux/linux-3/patches/ps3avmgr-char-device.patch
+wget http://gitbrew.org/~glevand/ps3/linux/linux-3/patches/ps3dispmgr.patch
+wget http://gitbrew.org/~glevand/ps3/linux/linux-3/patches/ps3jupiter-3.2.1.patch
+wget http://gitbrew.org/~glevand/ps3/linux/linux-3/patches/lv1call-add-hvcalls-114-115.patch
+wget http://gitbrew.org/~glevand/ps3/linux/linux-3/patches/ps3physmem.patch
+wget http://gitbrew.org/~glevand/ps3/linux/linux-3/patches/lv1call-add-storage-region-hvcalls.patch
+wget http://gitbrew.org/~glevand/ps3/linux/linux-3/patches/ps3strgmngr.patch
+wget http://gitbrew.org/~glevand/ps3/linux/linux-3/patches/ps3rom-vendor-specific-command.patch
+wget http://gitbrew.org/~glevand/ps3/linux/linux-3/patches/syscall-spu-create-unlock-dput-fix.patch
+wget http://gitbrew.org/~glevand/ps3/linux/linux-3/patches/spu-enum-shared-param.patch
+wget http://gitbrew.org/~glevand/ps3/linux/linux-3/patches/lv1call-repo-node-lparid-param.patch
+patch -p0 < ps3stor-multiple-regions.patch
+patch -p0 < ps3fb-use-fifo.patch
+patch -p0 < ps3flash.patch
+patch -p0 < ps3sysmgr-lpar-reboot.patch
+patch -p0 < ps3sysmgr-char-device.patch
+patch -p0 < ps3avmgr-char-device.patch
+patch -p0 < ps3dispmgr.patch
+patch -p0 < ps3jupiter-3.2.1.patch
+patch -p0 < lv1call-add-hvcalls-114-115.patch
+patch -p0 < ps3physmem.patch
+patch -p0 < lv1call-add-storage-region-hvcalls.patch
+patch -p0 < ps3strgmngr.patch
+patch -p0 < ps3rom-vendor-specific-command.patch
+patch -p0 < syscall-spu-create-unlock-dput-fix.patch
+patch -p0 < spu-enum-shared-param.patch
+patch -p0 < lv1call-repo-node-lparid-param.patch
+wget http://gitbrew.org/~glevand/ps3/linux/linux-3/config-3.2.11
+cp /usr/src/linux/config-3.2.11 /usr/src/linux/.config
 
 
 ## Kernel compilation
@@ -139,7 +173,6 @@ make
 make install
 make modules_install
 cd /
-rm linux-2.6.tgz
 echo " "
 echo "Kernel compiling is done if no errors occured."
 echo " "
