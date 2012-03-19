@@ -122,10 +122,12 @@ swapon /dev/ps3dd1
 
 ## Git cloning of Kernal)
 echo "Downloading kernel source from git and creating symlink"
+pwd
 cd /usr/src
+pwd
 wget http://www.kernel.org/pub/linux/kernel/v3.0/linux-3.2.11.tar.bz2
 tar xmvf linux-3.2.11.tar.bz2
-ln -sf /usr/src/linux-3.2.11/ /usr/src/linux/
+ln -sf /usr/src/linux-3.2.11 /usr/src/linux
 cd /usr/src/linux
 wget http://gitbrew.org/~glevand/ps3/linux/linux-3/patches/ps3stor-multiple-regions.patch
 wget http://gitbrew.org/~glevand/ps3/linux/linux-3/patches/ps3fb-use-fifo.patch
