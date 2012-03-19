@@ -124,8 +124,8 @@ swapon /dev/ps3dd1
 echo "Downloading kernel source from git and creating symlink"
 cd /usr/src
 wget http://www.kernel.org/pub/linux/kernel/v3.0/linux-3.2.11.tar.bz2
-tar -xvf linux-3.2.11-build.tar.bz2
-ln -sf /usr/src/linux-3.2.11 /usr/src/linux
+tar xmvf linux-3.2.11-build.tar.bz2
+ln -sf /usr/src/linux-3.2.11/ /usr/src/linux/
 cd /usr/src/linux
 wget http://gitbrew.org/~glevand/ps3/linux/linux-3/patches/ps3stor-multiple-regions.patch
 wget http://gitbrew.org/~glevand/ps3/linux/linux-3/patches/ps3fb-use-fifo.patch
@@ -160,7 +160,7 @@ patch -p0 < syscall-spu-create-unlock-dput-fix.patch
 patch -p0 < spu-enum-shared-param.patch
 patch -p0 < lv1call-repo-node-lparid-param.patch
 wget http://gitbrew.org/~glevand/ps3/linux/linux-3/config-3.2.11
-cp /usr/src/linux/config-3.2.11 /usr/src/linux/.config
+cp config-3.2.11 .config
 
 
 ## Kernel compilation
