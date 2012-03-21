@@ -51,7 +51,7 @@ echo -e "auto lo\niface lo inet loopback\n\nauto eth0\niface eth0 inet dhcp\n" >
 echo " "
 echo "Creating entries for sources.list"
 echo " "
-echo -e "deb http://ftp.us.debian.org/debian squeeze main\ndeb-src http://ftp.us.debian.org/debian squeeze main\n\ndeb http://security.debian.org/ squeeze/updates main\ndeb-src http://security.debian.org/ squeeze/updates main\n" > /etc/apt/sources.list
+echo -e "deb http://ftp.us.debian.org/debian wheezy main\ndeb-src http://ftp.us.debian.org/debian wheezy main\n\ndeb http://security.debian.org/ wheezy/updates main\ndeb-src http://security.debian.org/ wheezy/updates main\n" > /etc/apt/sources.list
 
 
 ## Updating packages for Debian install
@@ -108,9 +108,8 @@ usermod -aG sudo $F
 echo " "
 echo "Installing development packages for kernel build"
 echo " "
-sh -c 'echo "deb http://ftp.debian.org/debian experimental main" >> /etc/apt/sources.list'
 aptitude update
-aptitude -t experimental install git build-essential ncurses-dev
+aptitude install git build-essential ncurses-dev
 gcc --version
 sleep 20
 
