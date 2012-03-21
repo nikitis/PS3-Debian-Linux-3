@@ -111,8 +111,11 @@ usermod -aG sudo $F
 echo " "
 echo "Installing development packages for kernel build"
 echo " "
-aptitude -y install git build-essential ncurses-dev
-
+sh -c 'echo "deb http://ftp.debian.org/debian experimental main" >> /etc/apt/sources.list'
+aptitude update
+aptitude -t experimental install git build-essential ncurses-dev
+gcc --version
+sleep 20
 
 ## Creating Swap Parition and Enabling
 
