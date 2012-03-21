@@ -183,7 +183,7 @@ echo " "
 ## Debootstrap
 
 echo "Debootstrapping... This process can take a couple of minutes."
-debootstrap --arch powerpc squeeze /mnt/debian http://ftp.us.debian.org/debian
+debootstrap --arch powerpc wheezy /mnt/debian http://ftp.us.debian.org/debian
 echo " "
 
 echo "Copying 2nd half of installer and variables over to post-chrooted environment"
