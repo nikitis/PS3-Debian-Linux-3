@@ -1,4 +1,4 @@
-#!/bin/bash
+a#!/bin/bash
 
 ############# Section 2 of Debian Installer ###########
 ## Had to add this section due to chrooting process. ##
@@ -176,7 +176,12 @@ cd /usr/src/linux
 make menuconfig
 make
 make install
+echo "Pausing to give time to read error then will make modules_install"
+sleep 50
 make modules_install
+echo "Any errors on make modules install?"
+sleep 50
+cp System.map vmlinux arch/powerpc/boot/zImage.pseries arch/powerpc/boot/dtbImage.ps3 /boot
 cd /
 echo " "
 echo "Kernel compiling is done if no errors occured."
