@@ -61,8 +61,6 @@ echo "Updating base install package index."
 echo " "
 aptitude update
 aptitude upgrade
-gcc --version
-sleep 20
 echo " "
 echo "Setting up locales and console-data.  For english set en-us-UTF8."
 echo " "
@@ -91,7 +89,6 @@ aptitude clean
 
 ## User creation and password setting
 echo "Starting user creation and password entries..."
-
 echo "Please set a new root password."
 passwd
 echo " "
